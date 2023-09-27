@@ -1,6 +1,6 @@
 // CSC237 Lab 6a: Bitwise Operations:
 //
-// This progam implements a "command loop" that invokes different functions, 
+// This program implements a "command loop" that invokes different functions, 
 // based on the command that the user enters.   The functions themselves 
 // perform various bitwise operations on data entered by the user.
 
