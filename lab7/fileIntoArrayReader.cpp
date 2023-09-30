@@ -67,6 +67,7 @@ int main() {
   int lowest, highest, sum;
   double average;
 
+  // Get File name
   cout << "Enter name of input file with the extension. Ex fileName.txt: ";
   getline(cin, inputFileName);
   cout << " \n You selected " << inputFileName << endl;
