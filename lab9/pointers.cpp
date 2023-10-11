@@ -47,7 +47,7 @@ void displayIntegerArray(int *arrayPtr, int arraySize) {
   cout << setfill('0');
   for(int i = 0; i < arraySize; i++) {
     cout << hex << uppercase << setw(16)<< &arrayPtr[i] << ": " 
-      << "arrayPtr[" << dec << "] = " << dec << arrayPtr[i] 
+      << "arrayPtr[" << "] = " << dec << arrayPtr[i] 
       << " (Hex " << hex << setw(8) << arrayPtr[i] << ")" 
       << endl;
   }
