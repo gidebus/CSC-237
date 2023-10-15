@@ -97,7 +97,33 @@ void packData(string inputFile, string packedFile) {
 }
 
 void unpackData(string packedFile, string unpackedFile) {
+  ifstream inFile(packedFile);
+  ofstream outFile(unpackedFile);
+  unsigned int dataPackage;
+  char outputChar;
+
+  if(!inFile.is_open()) {
+    cout << "Error: Could not open the input file." << endl;
+    return;
+  }
+
+  if(!outFile.is_open()) {
+    cout << "Error: Could not open the output file." << endl;
+    inFile.close();
+    return;
+  }
+
+  while(inFile >> hex >> dataPackage) {
+    for (int i = 3; i >= 0; --i) {
+      outputChar = (dataPackage >> (i * 8)) & 0xFF;
+      if (outputChar != 0x00) {
+        outFile << outputChar;
+      }
+    }
+  }
   
+  inFile.close();
+  outFile.close();
 }
 
 void displayMenu() {
