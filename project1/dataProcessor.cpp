@@ -45,6 +45,11 @@ int main() {
 
     if(userInput == 'u') {
       cout << "\nYou selected u \n" << endl;
+      cin.clear();
+      cout << "Enter the packed filename: ";
+      cin >> packedFile;
+      cout << "Enter the unpacked filename: ";
+      cin >> unpackedFile;
       unpackData(packedFile, unpackedFile);
     }
 
@@ -72,41 +77,27 @@ void packData(string inputFile, string packedFile) {
   string data;
 
   while(getline(inFile, data)) {
-    cout << data << endl;
-  }
     data += "\n";
-
-  string subString;
-  // for(int i = 0; i < data.length(); i++) {
-  //   cout << data[i] << endl;
-  //   dataPackage = data[i];
-  //   cout << dataPackage << endl;
-  //   cout << hex << dataPackage << endl;
-  //   cout << "----------" << endl;
-  // }
-
-  int startIndex = 0;
-  while(startIndex < data.length()) {
-    int endIndex = startIndex + 4;
-    if(endIndex > data.length()) {
-      endIndex = data.length();
+    int startIndex = 0;
+    while(startIndex < data.length()) {
+      int endIndex = startIndex + 4;
+      if (endIndex > data.length()) {
+        endIndex = data.length();
+      }
+      unsigned int dataPackage = 0;
+      for(int i = startIndex; i < endIndex; ++i) {
+        dataPackage = (dataPackage << 8) | static_cast<unsigned char>(data[i]);
+      }
+      outFile << hex << dataPackage << endl;
+      startIndex = endIndex;
     }
-    unsigned int dataPackage = 0;
-    subString = data.substr(startIndex, endIndex - startIndex);
-    for(int i = 0; i < subString.length(); i++) {
-      dataPackage <<= 8;
-      dataPackage = (dataPackage <<= 4) | subString[i];
-    }
-    cout << dataPackage << endl;
-    startIndex += 4;
   }
+  inFile.close();
+  outFile.close();
 }
 
 void unpackData(string packedFile, string unpackedFile) {
-  cin.clear();
-  cout << "Enter the input filename: ";
-  cout << "Enter the output filename: ";
-  cin >> unpackedFile;
+  
 }
 
 void displayMenu() {
