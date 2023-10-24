@@ -13,10 +13,9 @@ class Mortgage {
 
   public:
     Mortgage(double, double, int);
-    int getTotalYearsToRepay();
-    double getLoanAmount();
-    double getAnnualInterestRate();
-    double getMonthlyPayment();
+    int getTotalYearsToRepay() const;
+    double getLoanAmount() const ;
+    double getAnnualInterestRate() const;
     double calculateMonthlyPayment();
     double calculateTotalPayback();
 };
