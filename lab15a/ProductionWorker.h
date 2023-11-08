@@ -16,16 +16,11 @@ private:
 
 public:
 	// Default constructor
-	ProductionWorker() : Employee() {
-		shift = 0; payRate = 0.0;
-	}
+	ProductionWorker();
 
 
 	// Constructor
-	ProductionWorker(string aName, string aDate, int aShift, double aPayRate)
-		: Employee(aName, aDate) {
-		shift = aShift; payRate = aPayRate;
-	}
+	ProductionWorker(string aName, string aDate, int aShift, double aPayRate);
 
 
 	// Mutators
