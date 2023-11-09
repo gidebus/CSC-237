@@ -7,7 +7,7 @@ using namespace std;
 
 void printMenu() {
   cout << "\nSupported Commands: " << endl;
-  cout << setw(5) << "" << "a. create a new ProductionWorker object" << endl;
+  cout << setw(5) << "" << "c. create a new ProductionWorker object" << endl;
   cout << setw(5) << "" << "h. print help text" << endl;
   cout << setw(5) << "" << "p. print ProductionWorker information" << endl;
   cout << setw(5) << "" << "q. quit (end the program)" << endl;
