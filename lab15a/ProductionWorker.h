@@ -18,6 +18,24 @@ public:
 	// Default constructor
 	ProductionWorker();
 
+	class InvalidShift {
+		private:
+			int value;
+
+		public:
+			InvalidShift(int val);
+			int getValue() const;
+	};
+
+	class InvalidPayRate {
+		private:
+			double value;
+
+		public:
+			InvalidPayRate(double val);
+			double getValue() const;
+	};
+
 
 	// Constructor
 	ProductionWorker(string aName, string aDate, int aShift, double aPayRate);
@@ -33,6 +51,12 @@ public:
 	string getShiftName() const;
 	double getPayRate() const;
 	void printWorkerData() const;
+
+// Error Handlers
+static void testShift(int aShift);
+static void testPayRate(double aPayRate);
+
 };
+
 
 #endif

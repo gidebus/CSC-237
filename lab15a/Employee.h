@@ -6,6 +6,7 @@ using namespace std;
 
 class Employee
 {
+
 private:
 	static int lastEmployeeNumberIssued;   // Sequential employee number
 	int employeeNumber;                    // Employee number for current employee
@@ -16,7 +17,14 @@ public:
 	// Constructors
 	Employee();
 	Employee(string aName, string aDate);
-	
+
+	class InvalidHireDate {
+		private:
+			string value;
+		public:
+			InvalidHireDate(string val);
+			string getValue() const;
+	};
 	// Mutators
 	void setEmployeeName(string n);
 	void setHireDate(string date);
@@ -26,6 +34,9 @@ public:
 	int getEmployeeNumber() const;
 	string getHireDate() const;
 	static int getLastEmployeeNumberIssued();
+
+	// Error Handler
+	static void isValidDate(string aDate);
 };
 
 #endif

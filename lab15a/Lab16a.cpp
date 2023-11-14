@@ -28,6 +28,10 @@ int main() {
 
     if(userInput == 'c') {
       worker = ProductionWorker::createNewProductionWorker();
+      if(worker == nullptr) {
+        delete worker;
+        worker = ProductionWorker::createNewProductionWorker();
+      }
     }
 
     if(userInput == 'p') {
