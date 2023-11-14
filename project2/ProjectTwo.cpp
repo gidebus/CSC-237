@@ -24,12 +24,37 @@ int main() {
     cout << "\nEnter command (or 'h' for help): ";
     cin >> userInput;
 
+    if(userInput == 'a') {
+
+    }
+
     if(userInput == 'h') {
       printMenu();
     }
 
+
+    if(userInput == 'i') {
+
+    }
+
+    if(userInput == 'n') {
+
+    }
+
+    if(userInput == 'o') {
+
+    }
+
+    if(userInput == 'p') {
+
+    }
+
     if(userInput == 'q') {
       break;
+    }
+
+    if(userInput == 'r') {
+
     }
 
   } while(true);
