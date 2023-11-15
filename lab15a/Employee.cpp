@@ -2,6 +2,8 @@
 
 #include "Employee.h"
 #include <string>
+#include <cctype>
+
 using namespace std;
 
 int Employee::lastEmployeeNumberIssued=0;   // Sequential employee number
@@ -22,9 +24,14 @@ int Employee::lastEmployeeNumberIssued=0;   // Sequential employee number
 		lastEmployeeNumberIssued++;
 		employeeNumber = lastEmployeeNumberIssued;
 		employeeName = aName;
-		hireDate = aDate;
+		isValidDate(aDate);
+    hireDate = aDate;
 	}
 
+  Employee::InvalidHireDate::InvalidHireDate(string val) : value(val) {};
+	string Employee::InvalidHireDate::getValue() const {
+		return value;
+	}
 	// Mutators
 	void Employee::setEmployeeName(string n)
 	{
@@ -57,5 +64,24 @@ int Employee::lastEmployeeNumberIssued=0;   // Sequential employee number
 	{
 		return lastEmployeeNumberIssued;
 	}
+  
+  void Employee::isValidDate(string date) {
 
-	
+    if(date.length() != 10) {
+      throw InvalidHireDate(date);
+    }
+
+    if(date[2] != '/' || date[5] != '/') {
+      throw InvalidHireDate(date);
+    }
+
+    for(int i = 0; i < 10; i++) {
+      if(i == 2 || i == 5) {
+        continue;
+      } 
+
+      if(!isdigit(date[i])) {
+        throw InvalidHireDate(date);
+      }
+    }
+  }

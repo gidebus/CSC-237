@@ -12,7 +12,10 @@ ProductionWorker::ProductionWorker() : Employee() {
 
 ProductionWorker::ProductionWorker(string aName, string aDate, int aShift, double aPayRate)
   : Employee(aName, aDate) {
-  shift = aShift; payRate = aPayRate;
+  testShift(aShift);
+  shift = aShift; 
+  testPayRate(aPayRate);
+  payRate = aPayRate;
 }
 
 void ProductionWorker::setShift(int s) {
@@ -44,6 +47,17 @@ void ProductionWorker::printWorkerData() const {
   cout << "Pay rate: " << getPayRate() << endl;
 }
 
+ProductionWorker::InvalidShift::InvalidShift(int val)  : value(val) {};
+ProductionWorker::InvalidPayRate::InvalidPayRate(double val) : value(val) {};
+
+int ProductionWorker::InvalidShift::getValue() const {
+  return value;
+}
+
+double ProductionWorker::InvalidPayRate::getValue() const {
+  return value;
+};
+
 ProductionWorker* ProductionWorker::createNewProductionWorker() {
   string employeeName, hireDate;
   int shift;
@@ -61,6 +75,26 @@ ProductionWorker* ProductionWorker::createNewProductionWorker() {
 
   cout << "Enter hourly pay rate for new employee: ";
   cin >> hourlyPayRate;
-
-  return new ProductionWorker(employeeName, hireDate, shift, hourlyPayRate);
+  try {
+    return new ProductionWorker(employeeName, hireDate, shift, hourlyPayRate);
+  } catch(Employee::InvalidHireDate e) {
+    cout << "\nError: Invalid hire date " << e.getValue() << ": Hire date must be MM/DD/YYYY format." << endl;
+  } catch(ProductionWorker::InvalidShift e) {
+    cout << "\nError: Invalid shift number: " << e.getValue() << endl;
+  } catch(ProductionWorker::InvalidPayRate e) {
+    cout << "\nError: Invalid pay rate number: " << e.getValue() << endl;
+  }
+  return nullptr;
 }
+
+void ProductionWorker::testShift(int aShift) {
+  if(aShift != 1 && aShift != 2) {
+    throw InvalidShift(aShift);
+  }
+};
+
+void ProductionWorker::testPayRate(double aPayRate) {
+  if(aPayRate < 0) {
+    throw InvalidPayRate(aPayRate);
+  }
+};
