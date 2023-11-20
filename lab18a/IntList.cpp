@@ -1,7 +1,16 @@
 #include "IntList.h"
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
+
+IntList::~IntList() {
+  while(head != nullptr) {
+    ListNode* tempNode = head;
+    head = head->next;
+    delete tempNode;
+  }
+}
 
 void IntList::appendNode(int value) {
   ListNode* newNode = new ListNode(value);
