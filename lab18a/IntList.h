@@ -2,7 +2,8 @@
 #ifndef NUMBERLIST_H
 #define NUMBERLIST_H
 
-#include <string>
+#include <iostream>
+#include <iomanip>
 
 class IntList
 {
