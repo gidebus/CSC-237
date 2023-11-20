@@ -35,9 +35,8 @@ int main() {
     };
     
     if(userInput == 'c') {
-      int length = linkedList.total();
-      cout << "Total of all list values = " << length << endl;
-
+      int length = linkedList.length();
+      cout << "Total of all list values = " << length << " nodes." << endl;
     };
 
     if(userInput == 'd') {
@@ -75,8 +74,8 @@ int main() {
     };
 
     if(userInput == 't') {
-      int length = linkedList.length();
-      cout << "Length of list =" << length << " nodes." << endl;
+      int total = linkedList.total();
+      cout << "Total of all list values = " << total << endl;
     };
     
   } while(true);

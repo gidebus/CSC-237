@@ -30,14 +30,14 @@ void IntList::appendNode(int value) {
 void IntList::insertNode(int value) {
   ListNode* newNode = new ListNode(value);
 
-  if(head == nullptr || head->value > newNode->value) {
+  if(head == nullptr || head->value >= newNode->value) {
     newNode->next = head;
     head = newNode;
     return;
   }
 
   ListNode* tempNode = head;
-  while(head->next != nullptr && head->next->value < newNode->value) {
+  while(tempNode->next != nullptr && tempNode->next->value < value) {
     tempNode = tempNode->next;
   }
   newNode->next = tempNode->next;
@@ -57,14 +57,14 @@ void IntList::deleteNode(int value) {
   while(currentNode != nullptr && currentNode->value != value) {
     previousNode = currentNode;
     currentNode = currentNode->next;
-
-    if(currentNode == nullptr) {
-      return;
-    }
-
-    previousNode->next = currentNode->next;
-    delete currentNode;
   }
+  
+  if(currentNode == nullptr) {
+    return;
+  }
+
+  previousNode->next = currentNode->next;
+  delete currentNode;
 }
 
 void IntList::maxValue() {
@@ -82,8 +82,8 @@ void IntList::maxValue() {
       currentMax = nextNode->value;
     }
     nextNode = nextNode->next;
-    cout << "Maximum value in list = " << currentMax << endl;
   }
+  cout << "Maximum value in list = " << currentMax << endl;
 }
 
 void IntList::print() {
