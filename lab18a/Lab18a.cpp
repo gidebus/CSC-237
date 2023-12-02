@@ -14,6 +14,11 @@ void printMenu() {
   cout << setw(5) << "" << "h. print this help text." << endl;
   cout << setw(5) << "" << "q. Quit (end the program)" << endl;
   cout << setw(5) << "" << "t. display TOTAL (sum) of all values in the list." << endl;
+  cout << setw(5) << "" << "r. RECURSIVELY print the contents of the list" << endl;
+  cout << setw(5) << "" << "b. Recursively print the contents of the list BACKWARDS" << endl;
+  cout << setw(5) << "" << "n. recursively count the NUMBER of nodes in the list" << endl;
+  cout << setw(5) << "" << "s. recursively calculate the SUM of all values in list" << endl;
+  cout << setw(5) << "" << "l. recursively calculate the LARGEST of all values in list" << endl;
   cout << endl;
 }
 
@@ -77,7 +82,29 @@ int main() {
       int total = linkedList.total();
       cout << "Total of all list values = " << total << endl;
     };
-    
+
+    if(userInput == 'r') {
+      cout << "Recursive print of list, head=" << linkedList.getHead() << endl;
+      linkedList.recursivePrint(linkedList.getHead());
+    }
+  
+    if(userInput == 'b') {
+      cout << "BACKWARDS recursive print of list, head=" << linkedList.getHead() << endl;
+      linkedList.recursiveBackwardsPrint(linkedList.getHead());
+    }
+  
+    if(userInput == 'n') {
+      cout << "Number of nodes in the list =" << linkedList.recursiveCount(linkedList.getHead()) << endl;
+    }
+  
+    if(userInput == 's') {
+      cout << "The sum of all data values is " << linkedList.recursiveSum(linkedList.getHead()) << endl;
+    }
+  
+    if(userInput == 'l') {
+      cout << "LARGEST data value = " << linkedList.recursivelyFindLargestValue(linkedList.getHead()) << endl;
+    }
+
   } while(true);
 
   cout << "\nExiting program...";

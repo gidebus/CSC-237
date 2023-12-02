@@ -125,3 +125,46 @@ int IntList::total() {
 
   return currentTotal;
 }
+
+IntList::ListNode* IntList::getHead() {
+  return head;
+}
+
+void IntList::recursivePrint(ListNode* node) {
+  if(node == nullptr) {
+    return;
+  }
+  cout << node <<": value= " << node->value << " next=" << node->next << endl;
+  recursivePrint(node->next);
+}
+
+void IntList::recursiveBackwardsPrint(ListNode* node) {
+  if(node == nullptr) {
+    return;
+  }
+  recursiveBackwardsPrint(node->next); 
+  cout << node <<": value= " << node->value << " next=" << node->next << endl;
+}
+
+int IntList::recursiveCount(ListNode* node) {
+  if(node == nullptr) {
+    return 0;
+  }
+  return 1 + recursiveCount(node->next);
+}
+
+int IntList::recursiveSum(ListNode* node) {
+  if(node == nullptr) {
+    return 0;
+  }
+  return node->value + recursiveSum(node->next);
+}
+
+int IntList::recursivelyFindLargestValue(ListNode* node) {
+  if(node == nullptr) {
+    return 0;
+  }
+
+  int largestSoFar = recursivelyFindLargestValue(node->next);
+  return node->value >largestSoFar ? node-> value : largestSoFar;
+}

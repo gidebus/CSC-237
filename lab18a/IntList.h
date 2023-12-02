@@ -33,6 +33,13 @@ class IntList
     void print(); // Outputs the values for all the node to the terminal
     int length(); // Outputs how many nodes are in the list
     int total(); // Returns the sum of all the values in the list
+
+    ListNode* getHead();
+    void recursivePrint(ListNode*);
+    void recursiveBackwardsPrint(ListNode*);
+    int recursiveCount(ListNode*);
+    int recursiveSum(ListNode*);
+    int recursivelyFindLargestValue(ListNode*);
 };
 
 #endif
