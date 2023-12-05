@@ -161,10 +161,10 @@ int IntList::recursiveSum(ListNode* node) {
 }
 
 int IntList::recursivelyFindLargestValue(ListNode* node) {
-  if(node == nullptr) {
-    return 0;
+  if(node->next == nullptr) {
+    return node->value;
   }
 
   int largestSoFar = recursivelyFindLargestValue(node->next);
-  return node->value >largestSoFar ? node-> value : largestSoFar;
+  return node->value > largestSoFar ? node->value : largestSoFar;
 }
