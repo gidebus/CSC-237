@@ -15,17 +15,81 @@ void printMenu() {
   cout << endl;
 }
 
+void createCargoPlane(vector<Airplane*>& fleet) {
+  string manufacturer, model;
+  int year, flightHours, maxCargoWeight;
+
+  cout << "\nEnter name of manufacturer: ";
+  cin >> manufacturer;
+
+  cout << "\nEnter model: ";
+  cin >> model;
+
+  cout << "\nEnter year built: ";
+  cin >> year;
+
+  cout << "\nEnter flight hours: ";
+  cin >> flightHours;
+
+  cout << "\nEnter maximum cargo weight: ";
+  cin >> maxCargoWeight;
+
+  CargoPlane* newCargoPlane = new CargoPlane(manufacturer, model, year, flightHours, maxCargoWeight);
+  fleet.push_back(newCargoPlane);
+  cout << "\nNew Airplane: " << newCargoPlane->getDescription();
+}
+
+void createPassengerPlane(vector<Airplane*>& fleet) {
+  string manufacturer, model;
+  int year, flightHours, maxNumberOfPassengers;
+
+  cout << "\nEnter name of manufacturer: ";
+  cin >> manufacturer;
+
+  cout << "\nEnter model: ";
+  cin >> model;
+
+  cout << "\nEnter year built: ";
+  cin >> year;
+
+  cout << "\nEnter flight hours: ";
+  cin >> flightHours;
+
+  cout << "\nEnter maximum Passenger count: ";
+  cin >> maxNumberOfPassengers;
+
+  PassengerPlane* newPassengerPlane = new PassengerPlane(manufacturer, model, year, flightHours, maxNumberOfPassengers);
+  fleet.push_back(newPassengerPlane);
+  cout << "\nNew Airplane: " << newPassengerPlane->getDescription();
+}
+
 int main() {
   vector<Airplane*> fleet; // Becomes the argument for each function
   char userInput;
 
   do {
-    cout << "\nEnter command (or 'h' for help): ";
+    cout << "\n\nEnter command (or 'h' for help): ";
     cin >> userInput;
 
     if(userInput == 'a') {
+      char typeOfAirplane;
       // The airplane object must be called using the new command
-      cout << "You chose A" << endl;
+      cout << "Enter type of airplane (c = cargo, p = passenger): " << endl;
+      cin >> typeOfAirplane;
+
+      if(typeOfAirplane != 'c' || typeOfAirplane != 'p') {
+        cout << "\nSorry. That is not a type of plane." << endl;
+      }
+
+      if(typeOfAirplane == 'c') {
+        createCargoPlane(fleet);
+      };
+
+      if(typeOfAirplane == 'p') {
+        createPassengerPlane(fleet);
+      };
+
+      cout << "\naddNewAirplane: Size of fleet = " << fleet.size() << endl;
     };
     
     if(userInput == 'f') {
