@@ -25,7 +25,7 @@ string PassengerPlane::getDescription() const {
   << "Model: " << getModel() << ", "
   << "Year: " << getYearBuilt() << ", "
   << "Hours " << getFlightHours() << ", "
-  << "Max Cargo: " << getMaxNumberOfPassengers() << ".";
+  << "Max Number of Passengers: " << getMaxNumberOfPassengers() << ".";
 
   return stringBuilder.str();
 }
