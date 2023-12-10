@@ -38,7 +38,7 @@ void createCargoPlane(vector<Airplane*>& fleet) {
   cout << "\nEnter maximum cargo weight: ";
   cin >> maxCargoWeight;
 
-  CargoPlane* newCargoPlane = new CargoPlane(manufacturer, model, year, flightHours, maxCargoWeight);
+  auto* newCargoPlane = new CargoPlane(manufacturer, model, year, flightHours, maxCargoWeight);
   fleet.push_back(newCargoPlane);
   cout << "\nNew Airplane: \n" << newCargoPlane->getDescription() << endl;
 }
@@ -63,7 +63,7 @@ void createPassengerPlane(vector<Airplane*>& fleet) {
   cout << "\nEnter maximum Passenger count: ";
   cin >> maxNumberOfPassengers;
 
-  PassengerPlane* newPassengerPlane = new PassengerPlane(manufacturer, model, year, flightHours, maxNumberOfPassengers);
+  auto* newPassengerPlane = new PassengerPlane(manufacturer, model, year, flightHours, maxNumberOfPassengers);
   fleet.push_back(newPassengerPlane);
   cout << "\nNew Airplane: \n" << newPassengerPlane->getDescription() << endl;
 }
@@ -147,7 +147,7 @@ int main() {
 
     if(userInput == 'a') {
       char typeOfAirplane;
-      // The airplane object must be called using the new command
+
       cout << "\nEnter type of airplane (c = cargo, p = passenger): " << endl;
       cin >> typeOfAirplane;
       
@@ -173,10 +173,6 @@ int main() {
 
     if(userInput == 'h') {
       printMenu();
-    };
-
-    if(userInput == 'i') {
-      int newValue;
     };
 
     if(userInput == 'p') {
