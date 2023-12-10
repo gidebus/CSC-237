@@ -36,7 +36,7 @@ void createCargoPlane(vector<Airplane*>& fleet) {
 
   CargoPlane* newCargoPlane = new CargoPlane(manufacturer, model, year, flightHours, maxCargoWeight);
   fleet.push_back(newCargoPlane);
-  cout << "\nNew Airplane: \n" << newCargoPlane->getDescription();
+  cout << "\nNew Airplane: \n" << newCargoPlane->getDescription() << endl;
 }
 
 void createPassengerPlane(vector<Airplane*>& fleet) {
@@ -60,7 +60,7 @@ void createPassengerPlane(vector<Airplane*>& fleet) {
 
   PassengerPlane* newPassengerPlane = new PassengerPlane(manufacturer, model, year, flightHours, maxNumberOfPassengers);
   fleet.push_back(newPassengerPlane);
-  cout << "\nNew Airplane: \n" << newPassengerPlane->getDescription();
+  cout << "\nNew Airplane: \n" << newPassengerPlane->getDescription() << endl;
 }
 
 void flyAirplane(vector<Airplane*>& fleet) {
@@ -97,8 +97,40 @@ void printFleet(vector<Airplane*>& fleet) {
   }
 }
 
+void removeAirplane(vector<Airplane*>& fleet) {
+  int airplaneID, locationID;
+  Airplane* foundAirplane = nullptr;
+
+  cout << "\nWhich airplane do you want to remove?: ";
+  cin >> airplaneID;
+
+
+  for(size_t i = 0; i < fleet.size(); ++i) {
+    if(fleet[i]->getAirplane_ID() == airplaneID) {
+      locationID = i;
+      foundAirplane = fleet[locationID];
+      break;
+    }
+  }
+
+  if(foundAirplane != nullptr) {
+    string removedAirplaneDescription =  foundAirplane->getDescription();
+
+    cout << "\nChoosing airplane: \n" << foundAirplane->getDescription();
+
+    delete foundAirplane;
+
+    fleet.erase(fleet.begin() + locationID);
+    cout << "\n Removal complete: \n Airplane " << removedAirplaneDescription << " has been removed.";
+
+  } else {
+    cout << "\nAirplane " << airplaneID << " not found. " << endl;
+  }
+  
+}
+
 int main() {
-  vector<Airplane*> fleet; // Becomes the argument for each function
+  vector<Airplane*> fleet;
   char userInput;
 
   do {
@@ -108,10 +140,11 @@ int main() {
     if(userInput == 'a') {
       char typeOfAirplane;
       // The airplane object must be called using the new command
-      cout << "Enter type of airplane (c = cargo, p = passenger): " << endl;
+      cout << "\nEnter type of airplane (c = cargo, p = passenger): " << endl;
       cin >> typeOfAirplane;
+      
 
-      if(typeOfAirplane != 'c' || typeOfAirplane != 'p') {
+      if(typeOfAirplane != 'c' && typeOfAirplane != 'p') {
         cout << "\nSorry. That is not a type of plane." << endl;
       }
 
@@ -143,7 +176,7 @@ int main() {
     };
   
     if(userInput == 'r') {
-      cout << "You chose R" << endl;
+      removeAirplane(fleet);
     };
     
     if(userInput == 'q') {
