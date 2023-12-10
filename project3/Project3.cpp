@@ -1,3 +1,6 @@
+// Name: Gilberto Del Busto
+// Due Date: Wednesday December 13th, 2023
+
 #include "Airplane.h"
 #include "CargoPlane.h"
 #include "PassengerPlane.h"
@@ -15,6 +18,7 @@ void printMenu() {
   cout << endl;
 }
 
+// function to create a cargo plane
 void createCargoPlane(vector<Airplane*>& fleet) {
   string manufacturer, model;
   int year, flightHours, maxCargoWeight;
@@ -39,6 +43,7 @@ void createCargoPlane(vector<Airplane*>& fleet) {
   cout << "\nNew Airplane: \n" << newCargoPlane->getDescription() << endl;
 }
 
+// function to create a passenger plane
 void createPassengerPlane(vector<Airplane*>& fleet) {
   string manufacturer, model;
   int year, flightHours, maxNumberOfPassengers;
@@ -63,6 +68,7 @@ void createPassengerPlane(vector<Airplane*>& fleet) {
   cout << "\nNew Airplane: \n" << newPassengerPlane->getDescription() << endl;
 }
 
+// function to add flight hours to an airplane
 void flyAirplane(vector<Airplane*>& fleet) {
   int airplaneID, flightDuration;
   Airplane* foundAirplane = nullptr;
@@ -90,6 +96,7 @@ void flyAirplane(vector<Airplane*>& fleet) {
   }
 }
 
+// function to print all airplanes
 void printFleet(vector<Airplane*>& fleet) {
   cout << "\nCurrent fleet contains " << fleet.size() << " airplane(s):" << endl;
   for(size_t i = 0; i < fleet.size(); i++) {
@@ -97,6 +104,7 @@ void printFleet(vector<Airplane*>& fleet) {
   }
 }
 
+// function to remove an airplane
 void removeAirplane(vector<Airplane*>& fleet) {
   int airplaneID, locationID;
   Airplane* foundAirplane = nullptr;
